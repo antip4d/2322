@@ -37,18 +37,16 @@ export const getNormalizedGameDataById = async (url, id) => {
 
 export const getNormalizedGamesDataByCategory = async (url, category) => {
   try {
-    const data = await getData(${url}?categories.name=${category})
-    if (!Array.isArray(data)) {
-      throw new Error('Полученные данные не являются массивом')
-    }
-    if (data.length === 0) {
-      throw new Error('Нет игр в категории')
+    const data = await getData(`${url}?categories.name=${category}`)
+    if (!Array.isArray(data) || data.length === 0) {
+      return []
     }
     return isResponseOk(data) ? normalizeData(data) : data
   } catch (error) {
     return error
   }
 }
+
 
 export const authorize = async (url, data) => {
   try {
