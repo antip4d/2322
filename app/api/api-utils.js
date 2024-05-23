@@ -38,12 +38,9 @@ export const getNormalizedGameDataById = async (url, id) => {
 export const getNormalizedGamesDataByCategory = async (url, category) => {
   try {
     const data = await getData(`${url}?categories.name=${category}`)
-    if (!Array.isArray(data)) {
-      throw new Error('Полученные данные не являются массивом')
-    }
-    return data.length ? (isResponseOk(data) ? normalizeData(data) : data) : []
+    return isResponseOk(data) ? normalizeData(data) : data ;
   } catch (error) {
-    return error
+    return error;
   }
 }
 
