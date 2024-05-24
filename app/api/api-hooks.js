@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getNormalizedGamesDataByCategory, isResponseOk } from './api-utils'
 
-export const useGetDataByCategory = (endpoint, category) => {
-  const [data, setData] = useState(null)
+
 
  export const useGetDataByCategory = (endpoint, category) => {
   const [data, setData] = useState(null)
